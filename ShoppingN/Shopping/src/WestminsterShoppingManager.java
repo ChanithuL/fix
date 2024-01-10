@@ -47,11 +47,9 @@ public class WestminsterShoppingManager implements ShoppingManager{
             switch(choice){
                 case 1:
                     Add();
-                    gui.updateTable();
                     break;
                 case 2:
                     Remove();
-                    gui.updateTable();
                     break;
                 case 3:
                     PrintList();
@@ -66,8 +64,10 @@ public class WestminsterShoppingManager implements ShoppingManager{
                     LoadList(Fname);
                     break;
                 case 6:
-                    WestminsterShoppingManager shoppingManager = new WestminsterShoppingManager();
-                    this.setGUI(new GUI(shoppingManager));
+                    if (this.gui != null) break;
+
+                    this.setGUI(new GUI(this));
+                    gui.updateTable();
                     break;
                 case 0:
                     System.out.println("Exiting the program.");
@@ -84,6 +84,11 @@ public class WestminsterShoppingManager implements ShoppingManager{
             ListOfProducts.add(product);
             System.out.println("Product added to list");
             System.out.println(ListOfProducts.get(0));
+
+            // Update the GUI if it exists
+            if (this.gui != null) {
+                gui.updateTable();
+            }
         }else{
             System.out.println("List is already full");
         }
@@ -99,6 +104,11 @@ public class WestminsterShoppingManager implements ShoppingManager{
             if(ProductR.equals(ListOfProducts.get(i).getProductID())){
                 ListOfProducts.remove(i);
                 System.out.println("Product removed");
+
+                // Update the GUI if it exists
+                if (this.gui != null) {
+                    gui.updateTable();
+                }
                 break;
             }
             else{
@@ -181,6 +191,11 @@ public class WestminsterShoppingManager implements ShoppingManager{
             ListOfProducts.addAll(loadedProducts);  // Add the loaded products to the list
             System.out.println("Loaded list:");
             PrintList();  // Optionally, print the loaded products
+
+            // Update the GUI if it exists
+            if (this.gui != null) {
+                gui.updateTable();
+            }
         } catch (IOException | ClassNotFoundException | ClassCastException e) {
             System.out.println("Error loading list: " + e.getMessage());
         }
