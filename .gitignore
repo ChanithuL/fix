@@ -10,3 +10,4 @@ bin
 *.tmp
 .settings/
 out/
+*.dat
