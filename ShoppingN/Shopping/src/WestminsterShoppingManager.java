@@ -67,7 +67,7 @@ public class WestminsterShoppingManager implements ShoppingManager{
                     break;
                 case 6:
                     WestminsterShoppingManager shoppingManager = new WestminsterShoppingManager();
-                    new GUI(shoppingManager);
+                    this.setGUI(new GUI(shoppingManager));
                     break;
                 case 0:
                     System.out.println("Exiting the program.");
@@ -177,7 +177,7 @@ public class WestminsterShoppingManager implements ShoppingManager{
         try (FileInputStream fileIn = new FileInputStream(Fname);
              ObjectInputStream objectIn = new ObjectInputStream(fileIn)) {
             List<Product> loadedProducts = (List<Product>) objectIn.readObject();
-            
+
             ListOfProducts.addAll(loadedProducts);  // Add the loaded products to the list
             System.out.println("Loaded list:");
             PrintList();  // Optionally, print the loaded products

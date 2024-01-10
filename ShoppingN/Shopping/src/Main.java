@@ -6,13 +6,9 @@ import java.io.*;
 
 public class Main {
     public static void main(String[] args) {
+        // Instantiate the shopping manager and show the menu
         WestminsterShoppingManager shoppingManager = new WestminsterShoppingManager();
-        GUI gui = new GUI(shoppingManager);
-
-        shoppingManager.setGUI(gui);
         shoppingManager.Menu();
-        //GUI gui = new GUI(shoppingManager);
-        //shoppingManager.Add();
     }
 
 }
