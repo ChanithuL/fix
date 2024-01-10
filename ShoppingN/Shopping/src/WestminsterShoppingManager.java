@@ -17,6 +17,7 @@ interface  ShoppingManager {
 public class WestminsterShoppingManager implements ShoppingManager{
 
     public static final Object[] COLUMN_NAMES = {"Product ID", "Name","Category", "Price(£)","info"};
+    private static final String DATABASE_FILENAME = "Saves.dat";
     public List<Product> ListOfProducts;
     private int MaxItems = 50;
     private GUI gui;
@@ -55,13 +56,10 @@ public class WestminsterShoppingManager implements ShoppingManager{
                     PrintList();
                     break;
                 case 4:
-                    String Fname  =  "Saves.txt";
-                    List <Product>products = new ArrayList<>();
-                    SaveList(Fname,products);
+                    SaveList(DATABASE_FILENAME, this.getListOfProducts());
                     break;
                 case 5:
-                    Fname = "Saves.txt";
-                    LoadList(Fname);
+                    LoadList(DATABASE_FILENAME);
                     break;
                 case 6:
                     if (this.gui != null) break;
@@ -175,12 +173,10 @@ public class WestminsterShoppingManager implements ShoppingManager{
     }
     public void SaveList(String Fname, List<Product> products) {
         try (ObjectOutputStream objectOut = new ObjectOutputStream(new FileOutputStream(Fname))) {
-            for (Product product : products) {
-                objectOut.writeObject(product); // Write each product object to the file
-            }
+            objectOut.writeObject(this.getListOfProducts()); // Write each product object to the file
             System.out.println("Product information saved to file successfully!");
         } catch (IOException e) {
-            System.out.println("Error saving product information to file: " + e.getMessage());
+            e.printStackTrace();
         }
     }
     public void LoadList(String Fname) {

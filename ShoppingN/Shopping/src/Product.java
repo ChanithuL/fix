@@ -1,5 +1,6 @@
+import java.io.Serializable;
 
-public abstract class Product{
+public abstract class Product implements Serializable {
     private String productID;
     private String productName;
     private int NoOfProductsAvailable;
