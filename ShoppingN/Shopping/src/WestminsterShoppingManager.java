@@ -120,15 +120,8 @@ public class WestminsterShoppingManager implements ShoppingManager{
 
        System.out.println("What type of category is the product, Choose 'E' or 'C': ");
        String category = input.nextLine();
-       if (category == "E"){
-           String fcategory = "Electronics";
 
-        } else if (category=="C") {
-           String fcategory = "Clothing";
-
-       }
-
-        System.out.println("Enter the product ID: ");
+       System.out.println("Enter the product ID: ");
        String productID = input.nextLine();
 
        System.out.println("Enter the product name: ");
@@ -140,7 +133,7 @@ public class WestminsterShoppingManager implements ShoppingManager{
        System.out.println("Enter the price: ");
        double price = Double.parseDouble(input.nextLine());
 
-       switch (category){
+       switch (category.toUpperCase()) {
            case "E":
                System.out.println("Enter the brand: ");
                String brand = input.nextLine();

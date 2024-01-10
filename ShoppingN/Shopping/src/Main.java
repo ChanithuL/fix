@@ -13,9 +13,6 @@ public class Main {
         shoppingManager.Menu();
         //GUI gui = new GUI(shoppingManager);
         //shoppingManager.Add();
-
-
-
     }
 
 }
